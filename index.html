@@ -1,0 +1,68 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Three Blind Mice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="wrap">
+		<div class="card">
+			<img class="logo" src="images/logo_tbm.png" alt="Three Blind Mice logo">
+			<div class="buttons">
+				<button type="button">Start Game</button>
+				<div class="menu-wrap">
+					<button type="button" class="menu-trigger">Options</button>
+					<div class="options-menu" aria-hidden="true">
+						<label>
+							<span>Cursor Speed</span>
+							<input type="range" min="0" max="100" value="50">
+						</label>
+						<label>
+							<span>Cursor Size</span>
+							<input type="range" min="0" max="100" value="50">
+						</label>
+						<label>
+							<span>Music Volume</span>
+							<input type="range" min="0" max="100" value="50">
+						</label>
+						<label>
+							<span>Voice Volume</span>
+							<input type="range" min="0" max="100" value="50">
+						</label>
+					</div>
+				</div>
+				<div class="menu-wrap">
+					<button type="button" class="menu-trigger">How To Play</button>
+					<div class="rules-menu" aria-hidden="true">
+						<ul>
+							<li>Click in the direction you want to guide the <b>Three Blind Mice</b>, they need your help to solve each room!</li>
+							<li>Clues and secrets are scattered all over! Use your <b>magnifying glass</b> to find them, they usually sparkle!</li>
+							<li>If you ever get stuck, press <b>Q</b> to ask the Crystal Ball for a hint.</li>
+							<li>Remember to save your progress in the <b>Pause Menu</b> regularly and before exiting the game.</li>
+						</ul>
+					</div>
+				</div>
+				<button type="button">Exit Game</button>
+			</div>
+			<div class="footer-text">Copyright © 1998 AWAL Games Group. All rights reserved.</div>
+<script>
+			document.querySelectorAll('.menu-wrap').forEach((menuWrap) => {
+				const trigger = menuWrap.querySelector('.menu-trigger');
+				trigger.addEventListener('click', (event) => {
+					event.stopPropagation();
+					document.querySelectorAll('.menu-wrap').forEach((otherWrap) => {
+						if (otherWrap !== menuWrap) {
+							otherWrap.classList.remove('open');
+							otherWrap.querySelector('[aria-hidden]').setAttribute('aria-hidden', 'true');
+						}
+					});
+					menuWrap.classList.toggle('open');
+					menuWrap.querySelector('[aria-hidden]').setAttribute('aria-hidden', menuWrap.classList.contains('open') ? 'false' : 'true');
+				});
+			});
+</script>
+</body>
+</html>
